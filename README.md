@@ -4,4 +4,4 @@
 
 ## WIP
 
-Simplex algorithm (using Tucker tablaeus) tools
+Simplex algorithm (using Tucker tableaus) tools
