@@ -50,6 +50,24 @@ class Tableau:
 
         return Tableau(n)
 
+    def remove_col(self, j: int) -> Tableau:
+        """Remove the jth column.
+
+        TODO finish docstring
+        """
+        new_matrix = np.delete(self.matrix, (j), axis=1)
+
+        return Tableau(new_matrix)
+
+    def remove_row(self, i: int) -> Tableau:
+        """Remove the ith row.
+
+        TODO finish docstring
+        """
+        new_matrix = np.delete(self.matrix, (i), axis=0)
+
+        return Tableau(new_matrix)
+
     def __str__(self):
         """Display the tableau nicely."""
         # TODO print it more nicely
