@@ -15,37 +15,37 @@ class Tableau:
     def __init__(self, matrix: np.matrix):
         """TODO: docstring."""
         self.matrix = matrix
-        self.m, self.n = matrix.shape
+        self.n, self.m = matrix.shape
 
     def get_all_coordinates(self) -> List[Tuple[int]]:
         """Return cartesian product of tableau dimensions."""
         return list(
-            itertools.product(list(range(self.m)), list(range(self.n)))
+            itertools.product(list(range(self.n)), list(range(self.m)))
         )
 
     def pivot(self, i: int, j: int) -> Tableau:
-        """Pivot the tableau on point i, j.
+        """Pivot the tableau on entry with row i, column j.
 
         TODO finish docstring
         """
         # Initialize the pivoted matrix
-        n = np.zeros((self.m, self.n))
+        n = np.zeros((self.n, self.m))
 
         # Pivot. TODO: protect against zero division
-        for x, y in self.get_all_coordinates():
-            if (x, y) == (i, j):
+        for row, col in self.get_all_coordinates():
+            if (row, col) == (i, j):
                 # Pivot entry
-                n[x, y] = 1 / self.matrix[x, y]
-            elif x == i:
+                n[row, col] = 1 / self.matrix[row, col]
+            elif row == i:
                 # Pivot row
-                n[x, y] = self.matrix[x, y] / self.matrix[i, j]
-            elif y == j:
+                n[row, col] = self.matrix[row, col] / self.matrix[i, j]
+            elif col == j:
                 # Pivot column
-                n[x, y] = -self.matrix[x, y] / self.matrix[i, j]
+                n[row, col] = -self.matrix[row, col] / self.matrix[i, j]
             else:
-                n[x, y] = (
-                    self.matrix[x, y] * self.matrix[i, j]
-                    - self.matrix[x, j] * self.matrix[i, y]
+                n[row, col] = (
+                    self.matrix[row, col] * self.matrix[i, j]
+                    - self.matrix[row, j] * self.matrix[i, col]
                 ) / self.matrix[i, j]
 
         return Tableau(n)
