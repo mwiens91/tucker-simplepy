@@ -4,8 +4,8 @@
 # tucker-simplepy
 
 Contains helper functions for common operations when applying the
-Simplex algorithm to a Tucker tableau (as outlined in "Linear
-Programming and Its Applications" by James K. Strayer (1989)).
+Simplex algorithm to a Tucker tableau, as outlined in "Linear
+Programming and Its Applications" by James K. Strayer (1989).
 
 Tucker tableaus are represented by NumPy matrices (and use 0-indexing by
 default unless you specify otherwise). All of these functions treat
